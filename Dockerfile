@@ -23,6 +23,11 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x BeamMP-Server
 RUN chmod +x /entrypoint.sh
 
+# Expose SSH port
+EXPOSE 22
+
+# Expose port 30814 for your other application
+EXPOSE 30814
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
