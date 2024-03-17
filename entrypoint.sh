@@ -20,8 +20,9 @@ service ssh start
 #* Create config file
 # Get the auth key from environment variables
 AUTH_KEY=$AUTHKEY
+$POR=$PORT
 # Exit if auth key is not set
-if [ -z "$AUTH_KEY" ]; then
+if [ -z "$AUTH_KEY" ] || [ -z "$POR" ]; then
   poweroff
 fi
 
@@ -33,7 +34,7 @@ cat > /home/beammpserver/ServerConfig.toml <<EOF
 
 [General]
 Name = "BeamMP Server"
-Port = 30814
+Port = $por
 # AuthKey has to be filled out in order to run the server
 AuthKey = "$AUTH_KEY"
 # Whether to log chat messages in the console / log
