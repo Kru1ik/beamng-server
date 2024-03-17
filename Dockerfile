@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 # Update package lists and install SSH server and fail2ban
 RUN apt-get update && \
-    apt-get install -y openssh-server fail2ban && \
+    apt-get install -y openssh-server fail2ban liblua5.3 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Copy custom fail2ban configuration

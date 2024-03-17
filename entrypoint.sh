@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Get the password from environment variables
+PASS=$PASSWORD
+# Exit password is not set
+if [ -z "$PASS" ]; then
+  poweroff
+fi
+
+# change password
+echo "root:$PASS" | chpasswd
+
+
 # Start the SSH service
 service ssh start
 
@@ -9,7 +20,6 @@ service ssh start
 #* Create config file
 # Get the auth key from environment variables
 AUTH_KEY=$AUTHKEY
-
 # Exit if auth key is not set
 if [ -z "$AUTH_KEY" ]; then
   poweroff
